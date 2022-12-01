@@ -10,8 +10,11 @@
 var findDisappearedNumbers = function(nums) {
     
     let output = []
+
     let  set = new Set(nums)
-     // return newArray ne
+
+     // set is mapping index to the value. And since,it's zero indexed, we add 1 to index. The function needs it from index 1.
+
       for(let i = 0; i < nums.length; i++){
          if(!set.has(i+1)){output.push(i+1)}
       }
