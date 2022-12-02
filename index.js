@@ -1,24 +1,42 @@
+import userData from "./data.mjs";
 
+/* Totally Private Data Farm 
 
-// Find All Numbers Disappeared in an Array
-//Given an array nums of n integers where nums[i] is in the range [1, n], 
-// return an array of all the integers in the range [1, n] that do not appear in nums.
+Good news, renown advertising firm Evil Corp. wants to purchase our 
+private user data! 
 
-//Input: nums = [4,3,2,7,8,2,3,1]
-// Output: [5,6]
+We'd never do this in real life of course, but just for practice 
+let's pretend we're unethical web hackers and transform the data 
+in the way Evil Corp. has requested. They're quite particular and
+just want an array of users with a fullname and human readable
+birthday.   
 
-var findDisappearedNumbers = function(nums) {
-    
-    let output = []
+Write a function that maps through the current data and returns
+a new an array of objects with only two properties: 
+fullName and birthday. Each result in your 
+array should look like this when you're done: 
 
-    let  set = new Set(nums)
+{
+    fullName: "Levent Busser", 
+    birthday: "Fri Aug 20 1971"
+}
 
-     // set is mapping index to the value. And since,it's zero indexed, we add 1 to index. The function needs it from index 1.
+Read about toDateString() for info on formatting a readable date. 
 
-      for(let i = 0; i < nums.length; i++){
-         if(!set.has(i+1)){output.push(i+1)}
-      }
-      return output;
-};
+*/
+function transformData(data){
+   // return an array of object, so I declare an empty array.
+   const arrayOfData = []
+   
+   // map through data
+      data.map((itemToMap)=>{
+          
+          arrayOfData.push({
+               fullName:`${itemToMap.name.first} ${itemToMap.name.last}`,
+               birthday: new Date(itemToMap.dob.date).toDateString()
+          })
+      })
+      return arrayOfData
+}
 
-console.log(findDisappearedNumbers([4,3,2,7,8,2,3,1])) // output: [5,6]
+console.log(transformData(userData));
